@@ -38,6 +38,7 @@ namespace {
   // BLE settings
   BLEService        service                       (BLE_SENSE_UUID("0000"));
   BLECharacteristic strokeCharacteristic          (BLE_SENSE_UUID("300a"), BLERead, stroke_struct_byte_count);
+  BLECharacteristic modelPrediction          (BLE_SENSE_UUID("300b"), BLERead, 1);
   
   // String to calculate the local and device name
   String name;
@@ -100,6 +101,7 @@ void setup() {
   BLE.setAdvertisedService(service);
 
   service.addCharacteristic(strokeCharacteristic);
+  service.addCharacteristic(modelPrediction);
 
   BLE.addService(service);
   BLE.advertise();
@@ -243,13 +245,16 @@ void loop() {
 
     // Parse the model output
     int8_t max_score;
-    int max_index;
+    uint8_t max_index;
     for (int i = 0; i < label_count; ++i) {
       const int8_t score = output->data.int8[i];
       if ((i == 0) || (score > max_score)) {
         max_score = score;
         max_index = i;
       }
+    }
+    if (central && central.connected()) {
+      modelPrediction.writeValue(max_index, 1);
     }
     TF_LITE_REPORT_ERROR(error_reporter, "Found %s (%d)", labels[max_index], max_score);
   }
