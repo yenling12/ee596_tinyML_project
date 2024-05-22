@@ -377,34 +377,7 @@ function switchLightOnAndDim() {
   };
 }
 
-function switchLightOff() {
-  // Define the API endpoint URL
-  const apiUrl = API_ENDPOINT_URL;
 
-  const request = new XMLHttpRequest();
-  request.open('PUT', apiUrl, true); // Set method, URL, and async flag
-
-  // Optional: Set headers (if needed)
-  // request.setRequestHeader('Authorization', 'Bearer YOUR_API_KEY');
-  // request.setRequestHeader('Content-Type', 'application/json');
-
-  // Set request body (data to send)
-  request.setRequestHeader('Content-Type', 'application/json');
-  request.send(JSON.stringify({ on: false }));
-  var apiStatusDiv = document.getElementById("api_status");
-  // Handle response
-  request.onreadystatechange = function () {
-    if (request.readyState === 4) { // Check if request is complete
-      if (request.status === 200) {
-        console.log('Light successfully turned off.');
-        apiStatusDiv.innerHTML = 'Light successfully turned off. ' + request.statusText;
-      } else {
-        console.error('Error turning off light:', request.statusText);
-        apiStatusDiv.innerHTML = 'Error turning off light: ' + request.statusText;
-      }
-    }
-  };
-}
 //-----------------------------------------------------------------------------------//
 // FUNCTIONS FOR DRAWING GESTURE
 function initStrokeGraph() {
