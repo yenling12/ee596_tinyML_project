@@ -29,6 +29,6 @@ The Arduino Nano BLE Sense is connected to a webpage via BLE. The webpage, `inde
 To implement this project:
 - Download the `index.html`,  `project_gestures.js` and the files in `project_gestures_arduino_files`.
 - Upload the Arduino files to your Arduino Nano BLE Sense.
-- In the `index.html`, replace `<bridge-ip>` and `username` in the `API_ENDPOINT_URL` value for your HUE Hub.
-- Connect your Arduino to the webpage by clicking the Bluetooth button
+- In the `project_gestures.js`, replace `<bridge-ip>` and `username` in the `API_ENDPOINT_URL` value for your HUE Hub.
+- Connect your Arduino in the `index.html` webpage by clicking the Bluetooth button
 - Start your gestures and see the results on the webpage!
