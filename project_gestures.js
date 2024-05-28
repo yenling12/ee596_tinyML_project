@@ -4,7 +4,7 @@
 var maxRecords = 64;
 var STROKE_POINT_COUNT = 160;
 var MESSAGE_COUNT = 1;
-var API_ENDPOINT_URL = 'https://192.168.165.205/api/NIoS9-ld04W9zCNqW6AkbMHQ7gm158Xw1J7YEjvq/lights/5/state'; //Need to fill out bridge ip and username for HUE Hub
+var API_ENDPOINT_URL = 'https://<ip-address>/api/<username>/lights/5/state'; //Need to fill out bridge ip and username for HUE Hub
 
 // UI elements
 const bigButton = document.getElementById('bigButton');
